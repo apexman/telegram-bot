@@ -1,6 +1,6 @@
 #!groovy
 // Check ub1 properties
-properties([disableConcurrentBuilds])
+properties([disableConcurrentBuilds()])
 
 pipeline {
     agent {
@@ -13,7 +13,12 @@ pipeline {
     stages {
         stage("First step") {
             steps {
-                sh 'ssh ubuntu@ub1 'hostname''
+                sh 'ssh ubuntu@ub1 \'hostname\''
+            }
+        }
+        stage("Second step") {
+            steps {
+                sh 'ssh ubuntu@ub1 \'uptime\''
             }
         }
     }
